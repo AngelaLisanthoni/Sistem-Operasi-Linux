@@ -85,7 +85,7 @@ def dengancomputer():
         if '-' not in board:
            printBoard(board)
            print("It is a tie!")
-           gameRunning == False
+           gameRunning = False
 
     #Switch Player
     def switchPlayer():
@@ -180,6 +180,7 @@ def denganplayer():
            return True
         elif board[2] == board[5] == board[8] and board[2] != "-":
            winner = board[2]
+           return True
 
     def checkDiag(board):
         global winner
@@ -207,9 +208,8 @@ def denganplayer():
     def checkIfTie(board):
         global gameRunning
         if '-' not in board:
-           printBoard(board)
            print("It is a tie!")
-           gameRunning == False
+           gameRunning = False
 
     #Switch Player
     def switchPlayer():
