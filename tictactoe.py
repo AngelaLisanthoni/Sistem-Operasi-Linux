@@ -1,8 +1,7 @@
 #Keluar Permainan
 def keluargame():
-   print("permainan dihentikan")
+   print("Keluar dari permainan, Terima Kasih sudah bermain")
 
-#Permainan dengan computer
 import random
 board = ["-", "-", "-",
         "-", "-", "-",
@@ -11,6 +10,7 @@ currentPlayer = "X"
 winner = None
 gameRunning = True
 
+#Permainan bersama computer
 def dengancomputer():
     #gameboard
     def printBoard(board):
@@ -122,14 +122,6 @@ def dengancomputer():
             break
 
 #Permainan dengan Player
-import random
-board = ["-", "-", "-",
-        "-", "-", "-",
-        "-", "-", "-",]
-currentPlayer = "X"
-winner = None
-gameRunning = True
-
 def denganplayer():
     #gameboard
     def printBoard(board):
@@ -241,20 +233,45 @@ def denganplayer():
             break
          switchPlayer()
 
-#MEMILIH JENIS GAME
-print ("-----", "-----", " ----", "  ", "-----", "----", " ----", "  ", "-----", " ---- ", "-----")
-print ("  |  ", "  |  ", "|    ", "  ", "  |  ", "|  |", "|    ", "  ", "  |  ", "|    |", "|    ")
-print ("  |  ", "  |  ", "|    ", "  ", "  |  ", "----", "|    ", "  ", "  |  ", "|    |", "-----")
-print ("  |  ", "  |  ", "|    ", "  ", "  |  ", "|  |", "|    ", "  ", "  |  ", "|    |", "|    ")
-print ("  |  ", "-----", " ----", "  ", "  |  ", "|  |", " ----", "  ", "  |  ", " ---- ", "-----")
+def ulang():
+    board = ["-", "-", "-",
+        "-", "-", "-",
+        "-", "-", "-",]
+    currentPlayer = "X"
+    winner = None
+    gameRunning = True
+    return board, currentPlayer, winner, gameRunning
 
-jenis = int(input("Pilih Jenis game:\n 1.Dengan Computer\n 2.Dengan Player\n pilihanmu:"))
-if jenis ==1:
-   print("bermain dengan computer")
-   dengancomputer()
-elif jenis ==2:
-   print("bermain dengan player")
-   denganplayer()
-else:
-   print("HARUS pilih antara 1 dan 2")
-   keluargame()
+#MEMILIH JENIS GAME
+print ("+-------------------------------------------------------------+")
+print ("| -----", "-----", " ----", "  ", "-----", "----", " ----", "  ", "-----", " ---- ", "----- |")
+print ("|   |  ", "  |  ", "|    ", "  ", "  |  ", "|  |", "|    ", "  ", "  |  ", "|    |", "|     |")
+print ("|   |  ", "  |  ", "|    ", "  ", "  |  ", "----", "|    ", "  ", "  |  ", "|    |", "----- |")
+print ("|   |  ", "  |  ", "|    ", "  ", "  |  ", "|  |", "|    ", "  ", "  |  ", "|    |", "|     |")
+print ("|   |  ", "-----", " ----", "  ", "  |  ", "|  |", " ----", "  ", "  |  ", " ---- ", "----- |")
+print ("|                       by: Angela Lisanthoni                 |")
+print ("+-------------------------------------------------------------+")
+
+
+main = True
+while main:
+    jenis = int(input("Pilih Jenis game:\n 1.Dengan Computer\n 2.Dengan Player\n 3.Keluar dari game \npilihanmu:"))
+    if jenis ==1:
+       print("bermain dengan computer")
+       dengancomputer()
+    elif jenis ==2:
+       print("bermain dengan player")
+       denganplayer()
+    elif jenis ==3:
+       main = False
+       keluargame()
+       break
+
+    board, currentPlayer,winner, gameRunning = ulang()
+
+    mainlagi = input("mau main lagi(y/n)?")
+    if mainlagi == 'y':
+       main = True
+    elif mainlagi == 'n':
+       main = False
+       keluargame()
